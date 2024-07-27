@@ -21,8 +21,7 @@ const About = () => {
                     <p>Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。</p>
                 </div>
             </div>
-            <h2 className='text-center text-4xl font-bold pt-[4rem] pb-[3rem]'>My <motion.span whileInView={{fontSize: "50px", content: "value"}}
-            className='bg-gradient-to-r from-indigo-500 to-indigo-400 bg-clip-text text-fill-transparent'>SKILL</motion.span></h2>
+            <h3 className='text-center text-3xl font-bold pt-[5rem] pb-[3rem]'>My <span className='bg-gradient-to-r from-indigo-500 to-indigo-400 bg-clip-text text-fill-transparent text-[40px]'>SKILL</span></h3>
             <div className='flex justify-center gap-[2rem] max-md:flex-col max-md:pr-10 max-md:pl-10'>
             {SkillData.map((skill, index) => (
                 <motion.div key={index} whileHover={{scale:1.07}} className="p-[2.5rem] bg-gradient-to-tr from-indigo-500 to-indigo-400">

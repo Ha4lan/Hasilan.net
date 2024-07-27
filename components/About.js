@@ -11,7 +11,7 @@ const About = () => {
             <div className='profile flex justify-center gap-[50px]'>
                 {/* left */}
                 <div>
-                    <motion.img src="/icon.png" initial={{opacity: 0}} animate={{opacity: 1}} width={250} height={250} className="rounded-full overflow-hidden" alt='Icon' />
+                    <motion.img src="/icon.png" initial={{opacity: 0}} whileInView={{opacity: 1}} width={250} height={250} className="rounded-full overflow-hidden" alt='Icon' />
                 </div>
                 {/* right */}
                 <div className='max-w-[500px] break-words'>

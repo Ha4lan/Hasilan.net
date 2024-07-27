@@ -7,5 +7,15 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-fill-transparent': {
+          '-webkit-text-fill-color': 'transparent',
+        }
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }
+  ],
 }

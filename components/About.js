@@ -18,7 +18,7 @@ const About = () => {
                 {/* right */}
                 <div className='max-w-[500px] break-words'>
                     <h3 className='text-3xl mb-[0.75rem] font-bold'>Hasilan</h3>
-                    <p>Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。Twittererです。</p>
+                    <p>書き途中...</p>
                 </div>
             </div>
             <h3 className='text-center text-3xl font-bold pt-[5rem] pb-[3rem]'>My <span className='bg-gradient-to-r from-indigo-500 to-indigo-400 bg-clip-text text-fill-transparent text-[40px]'>SKILL</span></h3>

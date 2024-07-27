@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Hasilan.net",
-  description: "Hasilan,Ha4lan,hsln",
+  description: "Hasilan,Ha4lan,hsln"
 };
 
 export default function RootLayout({ children }) {

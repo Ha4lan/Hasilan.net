@@ -27,7 +27,7 @@ const About = () => {
                 <motion.div key={index} whileHover={{scale:1.07}} className="p-[2.5rem] bg-gradient-to-tr from-indigo-500 to-indigo-400">
                     <div className="icon text-3xl">{skill.icon}</div>
                     <div className="name mt-[0.5rem] mb-[0.5rem] font-bold text-[1.25rem]">{skill.name}</div>
-                    <div className="level">{skill.skill}</div>
+                    <div className="level"><progress value={skill.skill} className=''></progress></div>
                     <div className="mt-[0.5rem] flex items-center cursor-pointer transition-[.25s] hover:text-indigo-800"><FaExternalLinkAlt className='mr-[0.5rem]' />Details</div>
                 </motion.div>
             ))}

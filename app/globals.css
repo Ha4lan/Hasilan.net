@@ -28,5 +28,10 @@
     background-color: #fff;
 }
 
-nav .socials svg {
+.level::-webkit-progress-value {
+    @apply bg-indigo-600;
+}
+
+.level progress::-moz-progress-bar {
+    @apply bg-indigo-600;
 }

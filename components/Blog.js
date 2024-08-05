@@ -10,7 +10,7 @@ export default function Blog() {
                     BLOG
                 </motion.span>
             </h2>
-            <div></div>
+            <div>自動更新テスト</div>
         </section>
     );
 };

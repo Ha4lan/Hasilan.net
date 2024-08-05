@@ -25,5 +25,6 @@ URL: https://hasilan.net
 ## Uses
 
 - Nodejs
-
 - Next
+- framer-motion
+- react icons

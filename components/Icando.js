@@ -18,8 +18,8 @@ const About = () => {
     const currentData = IcandoData[currentIndex];
 
     return (
-        <section className='bg-gray-800 text-white pb-[3rem]'>
-            <h2 className='text-center text-4xl font-bold pt-[3rem] pb-[1rem]'>What <motion.span whileInView={{fontSize: "50px", content: "value"}}
+        <section className='bg-gray-800 text-white pb-[5rem]'>
+            <h2 className='text-center text-4xl font-bold pt-[5rem] pb-[1rem]'>What <motion.span whileInView={{fontSize: "50px", content: "value"}}
             className='bg-gradient-to-r from-indigo-500 to-indigo-400 bg-clip-text text-fill-transparent'>I can do</motion.span><span className='ml-[10px]'>🤔</span></h2>
             <p className='text-center pb-[3rem]'>Click to view next</p>
             <div className='flex justify-center items-center pl-[2rem] pr-[2rem]'>

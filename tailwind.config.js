@@ -12,6 +12,13 @@ module.exports = {
       const newUtilities = {
         '.text-fill-transparent': {
           '-webkit-text-fill-color': 'transparent',
+        },
+        '.post': {
+          'display': 'inline-block',
+          'width': '48%',
+          'margin-top': '4px',
+          'padding': '15px',
+          'position': 'relative'
         }
       };
 

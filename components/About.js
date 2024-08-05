@@ -7,10 +7,10 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 const About = () => {
     return (
-        <section className='bg-gray-800 text-white pb-[3rem]'>
+        <section className='bg-gray-800 text-white'>
             <h2 className='text-center text-4xl font-bold pt-[3rem] pb-[3rem]'>About <motion.span whileInView={{fontSize: "50px", content: "value"}}
             className='bg-gradient-to-r from-indigo-500 to-indigo-400 bg-clip-text text-fill-transparent'>ME</motion.span></h2>
-            <div className='profile flex justify-center gap-[50px] max-md:flex-col items-center'>
+            <div className='profile flex justify-center gap-[50px] max-md:flex-col items-center mb-[3rem]'>
                 {/* left */}
                 <div>
                     <motion.img src="/icon.png" initial={{opacity: 0}} whileInView={{opacity: 1}} width={250} height={250} className="rounded-full overflow-hidden" alt='Icon' />
@@ -21,6 +21,7 @@ const About = () => {
                     <p>書き途中...</p>
                 </div>
             </div>
+            <div className='pb-[3rem] bg-gray-900'>
             <h3 className='text-center text-3xl font-bold pt-[5rem] pb-[3rem]'>My <span className='bg-gradient-to-r from-indigo-500 to-indigo-400 bg-clip-text text-fill-transparent text-[40px]'>SKILL</span></h3>
             <div className='flex justify-center gap-[2rem] max-md:flex-col max-md:pr-10 max-md:pl-10'>
             {SkillData.map((skill, index) => (
@@ -31,6 +32,7 @@ const About = () => {
                     <div className="mt-[0.5rem] flex items-center cursor-pointer transition-[.25s] hover:text-indigo-800"><FaExternalLinkAlt className='mr-[0.5rem]' />Details</div>
                 </motion.div>
             ))}
+            </div>
             </div>
         </section>
     );

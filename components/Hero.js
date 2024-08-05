@@ -8,7 +8,6 @@ function Hero() {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <>
-      yシャツ
       <Header />
       <header className="bg-gray-900 min-h-screen flex flex-col md:flex-row items-center justify-center p-4">
         <motion.div

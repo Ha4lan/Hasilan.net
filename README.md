@@ -20,8 +20,6 @@ My profile site and blog<br>
 
 URL: https://hasilan.net
 
-  
-
 ## Uses
 
 - Nodejs

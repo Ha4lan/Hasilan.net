@@ -16,11 +16,8 @@ export default function Blog() {
           throw new Error("Failed to fetch data");
         }
         const result = await res.json();
-        console.log("API Response:", result); // データを確認
-
-        // データがオブジェクトの場合、配列に変換
-        const items = result?.rss?.channel?.item ? [result.rss.channel.item] : [];
-        setData(items);
+        console.log(result); // デバッグ用に追加
+        setData(result);
       } catch (err) {
         setError(err.message);
       }
@@ -29,9 +26,21 @@ export default function Blog() {
     fetchData();
   }, []);
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data || !data.rss || !data.rss.channel || !data.rss.channel.item) {
+    return <div>No items found</div>;
+  }
+
+  const items = Array.isArray(data.rss.channel.item)
+    ? data.rss.channel.item
+    : [data.rss.channel.item];
+
   return (
-    <section className="bg-gray-900 text-white pb-[5rem]">
-      <h2 className="text-center text-4xl font-bold pt-[5rem] pb-[2rem]">
+    <section className="bg-gray-900 text-white pb-20">
+      <h2 className="text-center text-4xl font-bold pt-20 pb-8">
         My{" "}
         <motion.span
           whileInView={{ fontSize: "50px", content: "value" }}
@@ -40,48 +49,41 @@ export default function Blog() {
           BLOG
         </motion.span>
       </h2>
-      <div className="text-center">
-        <div className="w-[100%] max-w-[840px] inline-block text-left">
-          {error && <p className="text-red-500 text-center">{error}</p>}
-          {data && data.length === 0 ? (
-            <p className="text-gray-300 text-center">No items found</p>
-          ) : (
-            <div className="space-y-4">
-              {data?.map((item, index) => (
-                <div key={index} className="relative bg-gray-800 hover:bg-opacity-80 p-4 rounded-lg">
-                  <div className="absolute top-4 left-4 text-3xl text-gray-500">
-                    <GrNotes />
+      <div className="flex justify-center">
+        {items.length === 0 ? (
+          <div>No items found</div>
+        ) : (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 max-w-5xl px-4">
+            {items.map((item, index) => (
+              <a
+                key={index}
+                href={item.link}
+                className="relative block overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105 bg-gray-800 hover:bg-opacity-80"
+              >
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <GrNotes className="text-4xl text-gray-500" />
+                    <div className="text-xs text-[#aaa]">
+                      {item.pubDate
+                        ? new Date(item.pubDate).toLocaleDateString("ja-JP")
+                        : "Invalid Date"}
+                    </div>
                   </div>
-                  <div className="pl-16 text-left">
-                    <div className="text-ellipsis text-xl mt-2 font-bold text-gray-200">
-                      {item.title}
-                    </div>
-                    <div className="text-ellipsis text-base mt-1 text-gray-300">
-                      {item.description}
-                    </div>
-                    <div className="text-ellipsis text-sm mt-2 text-gray-300 flex items-center">
-                      <span className="text-[#3EA8FF] mr-2">
-                        <SiZenn />
-                      </span>
-                      Zenn
-                    </div>
-                    <div className="text-ellipsis text-xs mt-1 text-gray-500">
-                      {new Date(item.pubDate).toLocaleDateString()}
-                    </div>
-                    <a
-                      href={item.link}
-                      className="text-blue-400 hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Read more
-                    </a>
+                  <div className="text-lg font-bold text-gray-200 mb-2 line-clamp-3">
+                    {item.title || "No Title"}
+                  </div>
+                  <div className="text-sm text-gray-300 mb-4 line-clamp-3">
+                    {item.description || "No Description"}
+                  </div>
+                  <div className="flex items-center text-sm text-gray-300">
+                    <SiZenn className="text-[#3EA8FF] mr-2" />
+                    Zenn
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

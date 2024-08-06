@@ -51,8 +51,6 @@ const About = () => {
           {SkillData.map((skill, index) => (
             <motion.div
               key={index}
-              initial={{ scale: 1.05 }}
-              whileInView={{ scale: 1 }}
               whileHover={{ scale: 1.07 }}
               className="p-[2.5rem] bg-gradient-to-tr from-indigo-500 to-indigo-400"
             >

@@ -1,10 +1,34 @@
 "use client";
-import React from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GrNotes } from "react-icons/gr";
 import { SiZenn } from "react-icons/si";
 
 export default function Blog() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/parse-xml");
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const result = await res.json();
+        console.log("API Response:", result); // データを確認
+
+        // データがオブジェクトの場合、配列に変換
+        const items = result?.rss?.channel?.item ? [result.rss.channel.item] : [];
+        setData(items);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <section className="bg-gray-900 text-white pb-[5rem]">
       <h2 className="text-center text-4xl font-bold pt-[5rem] pb-[2rem]">
@@ -18,30 +42,45 @@ export default function Blog() {
       </h2>
       <div className="text-center">
         <div className="w-[100%] max-w-[840px] inline-block text-left">
-          <a href="" className="">
-            <div className="post bg-gray-800 hover:bg-opacity-80">
-              <div className="absolute top-[22px] left-[26px] text-[30px] text-center text-gray-500">
-                <GrNotes />
-              </div>
-              <div className="pl-[50px] leading-[15px] ml-[15px] text-left">
-                <div className="text-ellipsis text-[16px] mt-[5px] font-bold text-gray-200">
-                  タイトル
+          {error && <p className="text-red-500 text-center">{error}</p>}
+          {data && data.length === 0 ? (
+            <p className="text-gray-300 text-center">No items found</p>
+          ) : (
+            <div className="space-y-4">
+              {data?.map((item, index) => (
+                <div key={index} className="relative bg-gray-800 hover:bg-opacity-80 p-4 rounded-lg">
+                  <div className="absolute top-4 left-4 text-3xl text-gray-500">
+                    <GrNotes />
+                  </div>
+                  <div className="pl-16 text-left">
+                    <div className="text-ellipsis text-xl mt-2 font-bold text-gray-200">
+                      {item.title}
+                    </div>
+                    <div className="text-ellipsis text-base mt-1 text-gray-300">
+                      {item.description}
+                    </div>
+                    <div className="text-ellipsis text-sm mt-2 text-gray-300 flex items-center">
+                      <span className="text-[#3EA8FF] mr-2">
+                        <SiZenn />
+                      </span>
+                      Zenn
+                    </div>
+                    <div className="text-ellipsis text-xs mt-1 text-gray-500">
+                      {new Date(item.pubDate).toLocaleDateString()}
+                    </div>
+                    <a
+                      href={item.link}
+                      className="text-blue-400 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Read more
+                    </a>
+                  </div>
                 </div>
-                <div className="text-ellipsis text-[14px] mt-[6px] text-gray-300">
-                  コンテンツ
-                </div>
-                <div className="text-ellipsis text-[12px] mt-[6px] text-gray-300 flex">
-                  <span className="text-[#3EA8FF] mr-[4px]">
-                    <SiZenn />
-                  </span>
-                  Zenn
-                </div>
-                <div className="text-ellipsis text-[10px] text-[#aaa] leading-[14px]">
-                  2024-12-01
-                </div>
-              </div>
+              ))}
             </div>
-          </a>
+          )}
         </div>
       </div>
     </section>
